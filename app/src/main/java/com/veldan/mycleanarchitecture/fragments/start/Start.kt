@@ -1,5 +1,7 @@
 package com.veldan.mycleanarchitecture.fragments.start
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +19,7 @@ class Start : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         initBinding()
+        
         return binding.root
     }
 
