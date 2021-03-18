@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <TextView
@@ -15,7 +16,7 @@
         android:background="@drawable/shape_counter"
         android:gravity="center"
         android:maxLines="1"
-        android:text="0"
+        tools:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,10 +25,26 @@
         app:layout_constraintVertical_bias=".3"
         app:layout_constraintWidth_percent=".5" />
 
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        tools:text="10"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/fab_increment"
+        app:layout_constraintEnd_toStartOf="@id/fab_increment"
+        app:layout_constraintStart_toEndOf="@id/fab_decrement"
+        app:layout_constraintTop_toBottomOf="@id/tv_counter" />
+
+
     <ImageButton
-        android:id="@+id/ib_increment"
+        android:id="@+id/fab_increment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/state_fab_increment"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_increment_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,17 +52,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".9"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/state_fab_increment"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".8"
         app:layout_constraintWidth_percent=".25" />
 
     <ImageButton
-        android:id="@+id/ib_decrement"
+        android:id="@+id/fab_decrement"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
         android:background="@drawable/state_fab_decrement"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_decrement_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
