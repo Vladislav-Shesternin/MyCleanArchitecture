@@ -1,4 +1,4 @@
-package com.veldan.mycleanarchitecture.framework.data_sources
+package com.veldan.mycleanarchitecture.framework.data_sources.room.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.veldan.core.domain.Score
 
 @Entity(tableName = "score_table")
-class ScoreEntity(
+data class ScoreEntity(
 
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,

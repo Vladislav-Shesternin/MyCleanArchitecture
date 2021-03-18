@@ -1,10 +1,10 @@
-package com.veldan.mycleanarchitecture.framework.data_sources
+package com.veldan.mycleanarchitecture.framework.data_sources.room.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.veldan.core.domain.Score
+import com.veldan.mycleanarchitecture.framework.data_sources.room.entities.ScoreEntity
 
 @Dao
 interface ScoreDao {
