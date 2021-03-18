@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -70,4 +71,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$version_constraintLayout"
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+    // Room
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
 }

@@ -4,6 +4,7 @@ buildscript {
         version_kotlin = "1.4.31"
         version_constraintLayout = "2.0.4"
         version_navigation = "2.3.4"
+        version_room = "2.2.6"
     }
     repositories {
         google()
