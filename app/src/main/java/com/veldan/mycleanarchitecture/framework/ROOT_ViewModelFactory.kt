@@ -1,22 +1,23 @@
 package com.veldan.mycleanarchitecture.framework
 
-import android.util.Log
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-object MyViewModelFactory : ViewModelProvider.Factory {
+object ROOT_ViewModelFactory : ViewModelProvider.Factory {
 
-    private val ParentViewModel = MyViewModel::class.java
+    private val ParentViewModel = ROOT_ViewModel::class.java
 
+    private lateinit var application: Application
     private lateinit var interactors: Interactors
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        Log.i("VLAD", "viewModel = ${modelClass.simpleName}")
         if (ParentViewModel.isAssignableFrom(modelClass)) {
-            Log.i("VLAD", "Factory")
             return modelClass.getConstructor(
+                Application::class.java,
                 Interactors::class.java
             ).newInstance(
+                application,
                 interactors
             )
         }
@@ -24,9 +25,10 @@ object MyViewModelFactory : ViewModelProvider.Factory {
     }
 
     fun inject(
+        application: Application,
         interactors: Interactors
     ) {
-        Log.i("VLAD", "Inject")
+        this.application = application
         this.interactors = interactors
     }
 }

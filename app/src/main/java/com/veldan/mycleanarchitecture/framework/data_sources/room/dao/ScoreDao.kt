@@ -15,7 +15,7 @@ interface ScoreDao {
     @Query("SELECT * FROM score_table")
     suspend fun readAll(): List<ScoreEntity>
 
-    @Delete
-    suspend fun delete(score: ScoreEntity)
+    @Query("DELETE FROM score_table WHERE score = :score")
+    suspend fun delete(score: Int)
 
 }

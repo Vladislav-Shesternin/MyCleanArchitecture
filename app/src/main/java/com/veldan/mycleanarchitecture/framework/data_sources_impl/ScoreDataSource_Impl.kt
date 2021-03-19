@@ -4,9 +4,7 @@ import android.content.Context
 import com.veldan.core.data.sources.ScoreDataSource
 import com.veldan.core.domain.Score
 import com.veldan.mycleanarchitecture.framework.data_sources.room.MyRoomDatabase
-import com.veldan.mycleanarchitecture.framework.data_sources.room.entities.ScoreEntity
-import com.veldan.mycleanarchitecture.framework.data_sources.room.entities.asScoreList
-import com.veldan.mycleanarchitecture.framework.data_sources.room.entities.fillFrom
+import com.veldan.mycleanarchitecture.framework.data_sources.room.entities.*
 
 class ScoreDataSource_Impl(
     context: Context
@@ -15,7 +13,7 @@ class ScoreDataSource_Impl(
     private val scoreDao = MyRoomDatabase.getInstance(context).scoreDao
 
     override suspend fun add(score: Score) {
-        val scoreEntity = ScoreEntity() fillFrom score
+        val scoreEntity = ScoreEntityConvertors.convertScoreToScoreEntity(score)
         scoreDao.insert(scoreEntity)
     }
 
@@ -23,8 +21,7 @@ class ScoreDataSource_Impl(
         return scoreDao.readAll().asScoreList()
     }
 
-    override suspend fun delete(score: Score) {
-        val scoreEntity = ScoreEntity() fillFrom score
-        scoreDao.delete(scoreEntity)
+    override suspend fun delete(score: Int) {
+        scoreDao.delete(score)
     }
 }

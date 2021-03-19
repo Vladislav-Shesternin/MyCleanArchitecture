@@ -12,18 +12,11 @@ data class ScoreEntity(
     val id: Long = 0L,
 
     @ColumnInfo(name = "score")
-    var score: Int = 0
+    var score: Int
 
 )
 
-// ------------------------------------------------------------| [Convertors] extension functions |
-// {infix ext fun}: .fillFrom
-infix fun ScoreEntity.fillFrom(score: Score): ScoreEntity {
-    return this.also {
-        it.score = score.score
-    }
-}
-
+// ------------------------------------------------------------| [Convertors] ScoreEntity to Score |
 // {ext fun}: .asScoreList
 fun List<ScoreEntity>.asScoreList(): List<Score> {
     return this.map {
@@ -31,4 +24,16 @@ fun List<ScoreEntity>.asScoreList(): List<Score> {
             score = it.score
         )
     }
+}
+
+// ------------------------------------------------------------| [Convertors] Score to ScoreEntity |
+object ScoreEntityConvertors {
+    // {fun}: convertScoreToScoreEntity
+    fun convertScoreToScoreEntity(score: Score): ScoreEntity {
+        return ScoreEntity(
+            score = score.score
+        )
+    }
+
+
 }

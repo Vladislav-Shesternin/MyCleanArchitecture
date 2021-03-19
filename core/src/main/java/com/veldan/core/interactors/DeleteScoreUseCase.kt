@@ -7,7 +7,7 @@ class DeleteScoreUseCase(
     private val scoreRepository: ScoreRepository
 ) {
 
-    suspend operator fun invoke(score: Score) {
+    suspend operator fun invoke(score: Int) {
         scoreRepository.delete(score)
     }
 

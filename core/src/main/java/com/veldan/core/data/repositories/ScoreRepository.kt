@@ -15,7 +15,7 @@ class ScoreRepository(
         return dataSource.readAll()
     }
 
-    suspend fun delete(score: Score) {
+    suspend fun delete(score: Int) {
         dataSource.delete(score)
     }
 }

@@ -5,7 +5,7 @@ import com.veldan.core.interactors.DeleteScoreUseCase
 import com.veldan.core.interactors.ReadAllScoresUseCase
 
 data class Interactors(
-    private val addScore: AddScoreUseCase,
-    private val deleteScore: DeleteScoreUseCase,
-    private val readAllScores: ReadAllScoresUseCase,
+    val addScore: AddScoreUseCase,
+    val deleteScore: DeleteScoreUseCase,
+    val readAllScores: ReadAllScoresUseCase,
 )

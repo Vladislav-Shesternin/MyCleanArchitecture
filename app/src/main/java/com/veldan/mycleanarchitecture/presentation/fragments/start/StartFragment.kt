@@ -1,14 +1,13 @@
 package com.veldan.mycleanarchitecture.presentation.fragments.start
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.veldan.mycleanarchitecture.databinding.FragmentStartBinding
-import com.veldan.mycleanarchitecture.framework.MyViewModelFactory
+import com.veldan.mycleanarchitecture.framework.ROOT_ViewModelFactory
 
 class StartFragment : Fragment() {
 
@@ -23,22 +22,23 @@ class StartFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.i("VLAD", "StartFragment")
-        initBinding()
-        initViewModel()
-        Log.i("VLAD", "StartFragment onCreate")
-        return binding.root
-    }
 
-    // {init}: Binding
-    private fun initBinding() {
-        binding = FragmentStartBinding.inflate(layoutInflater)
+        initViewModel()
+        initBinding()
+
+        return binding.root
     }
 
     // {init}: ViewModel
     private fun initViewModel() {
-        Log.i("VLAD", "invoke initViewModel")
-        viewModel = ViewModelProvider(this, MyViewModelFactory).get(StartViewModel::class.java)
-        Log.i("VLAD", "initViewModel")
+        viewModel = ViewModelProvider(this, ROOT_ViewModelFactory).get(StartViewModel::class.java)
+    }
+
+    // {init}: Binding
+    private fun initBinding() {
+        binding = FragmentStartBinding.inflate(layoutInflater).apply {
+            lifecycleOwner = viewLifecycleOwner
+            startViewModel = viewModel
+        }
     }
 }

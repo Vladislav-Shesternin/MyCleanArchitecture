@@ -8,6 +8,6 @@ interface ScoreDataSource {
 
     suspend fun readAll(): List<Score>
 
-    suspend fun delete(score: Score)
+    suspend fun delete(score: Int)
 
 }
